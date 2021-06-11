@@ -40,13 +40,16 @@ void main() {
     final tNumberString = '1';
     final tNumberParsed = 1;
     final tNumberTrivia = NumberTrivia(text: 'test trivia', number: 1);
+    void setUpMockInputConverterSucess() {
+      when(mockInputConverter.stringToUnsignedInteger(any))
+          .thenReturn(Right(tNumberParsed));
+    }
 
     test(
         'should call the InputConverter to validate and convert the string to an unsigned integer.',
         () async {
       // arrange
-      when(mockInputConverter.stringToUnsignedInteger(any))
-          .thenReturn(Right(tNumberParsed));
+      setUpMockInputConverterSucess();
       // act
       bloc.add(GetTriviaForConcreteNumber(tNumberString));
       await untilCalled(mockInputConverter.stringToUnsignedInteger(any));
@@ -54,6 +57,7 @@ void main() {
       // assert
       verify(mockInputConverter.stringToUnsignedInteger(tNumberString));
     });
+
     test('should emit [Error] when the input is invalid', () async {
       // arrange
       when(mockInputConverter.stringToUnsignedInteger(any))
@@ -65,6 +69,17 @@ void main() {
       expectLater(bloc.stream, emitsInOrder(expected));
       // act
       bloc.add(GetTriviaForConcreteNumber(tNumberString));
+    });
+    test('should get data from the concrete use case', () async {
+      // arrange
+      setUpMockInputConverterSucess();
+      when(mockGetConcreteNumberTrivia(any))
+          .thenAnswer((_) async => Right(tNumberTrivia));
+      // act
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
+      await untilCalled(mockGetConcreteNumberTrivia(any));
+      // assert
+      verify(mockGetConcreteNumberTrivia(Params(number: tNumberParsed)));
     });
   });
 }

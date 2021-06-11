@@ -46,7 +46,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
           yield Error(message: INVALID_INPUT_FAILURE_MESSAGE);
         },
         (r) async* {
-          print(r);
+          getConcreteNumberTrivia(Params(number: r));
         },
       );
     }
