@@ -38,7 +38,7 @@ void main() {
         NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
     test('''should perform a GET request on a URL with number
         being the endpoint and with application/json header.''', () async {
-      // arange
+      // arrange
       setUpMockHttpClientSuccess200();
       // act
       dataSourceImpl.getConcreteNumberTrivia(tNumber);
@@ -47,7 +47,7 @@ void main() {
           headers: {'Content-Type': 'application/json'}));
     });
     test('should return NumberTrivia when the response code is 200', () async {
-      // arange
+      // arrange
       setUpMockHttpClientSuccess200();
       // act
       final result = await dataSourceImpl.getConcreteNumberTrivia(tNumber);
@@ -58,7 +58,7 @@ void main() {
     test(
         'should throw a ServerException when the response code is 404 or other',
         () async {
-      // arange
+      // arrange
       setUpMockHttpClientFailure404();
       // act
       final call = dataSourceImpl.getConcreteNumberTrivia;
@@ -72,7 +72,7 @@ void main() {
         NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
     test('''should perform a GET request on a URL with number
         being the endpoint and with application/json header.''', () async {
-      // arange
+      // arrange
       setUpMockHttpClientSuccess200();
       // act
       dataSourceImpl.getRandomNumberTrivia();
@@ -82,7 +82,7 @@ void main() {
     });
     test('should return a random NumberTrivia when the response code is 200',
         () async {
-      // arange
+      // arrange
       setUpMockHttpClientSuccess200();
       // act
       final result = await dataSourceImpl.getRandomNumberTrivia();
@@ -93,7 +93,7 @@ void main() {
     test(
         'should throw a ServerException when the response code is 404 or other',
         () async {
-      // arange
+      // arrange
       setUpMockHttpClientFailure404();
       // act
       final call = dataSourceImpl.getRandomNumberTrivia;

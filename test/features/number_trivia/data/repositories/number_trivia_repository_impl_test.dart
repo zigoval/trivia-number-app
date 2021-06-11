@@ -57,7 +57,7 @@ void main() {
     final tNumberTriviaModel = NumberTriviaModel(text: 'test', number: tNumber);
     final NumberTrivia tNumberTrivia = tNumberTriviaModel;
     test("should check if the device is online", () async {
-      // arange
+      // arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       // act
       repository.getConcreteNumberTrivia(tNumber);
@@ -104,7 +104,7 @@ void main() {
       test(
           'should return last locally cached data when the cached data is present',
           () async {
-        // arange
+        // arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenAnswer((_) async => tNumberTriviaModel);
         // act
@@ -116,7 +116,7 @@ void main() {
       });
       test('should return CacheFailure when there is no cached data present',
           () async {
-        // arange
+        // arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenThrow(CacheException());
         // act
@@ -134,7 +134,7 @@ void main() {
     final tNumberTriviaModel = NumberTriviaModel(text: 'test', number: 123);
     final NumberTrivia tNumberTrivia = tNumberTriviaModel;
     test("should check if the device is online", () async {
-      // arange
+      // arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       // act
       repository.getRandomNumberTrivia();
@@ -181,7 +181,7 @@ void main() {
       test(
           'should return last locally cached data when the cached data is present',
           () async {
-        // arange
+        // arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenAnswer((_) async => tNumberTriviaModel);
         // act
@@ -193,7 +193,7 @@ void main() {
       });
       test('should return CacheFailure when there is no cached data present',
           () async {
-        // arange
+        // arrange
         when(mockLocalDataSource.getLastNumberTrivia())
             .thenThrow(CacheException());
         // act

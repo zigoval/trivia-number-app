@@ -17,7 +17,7 @@ void main() {
   group('isConnected', () {
     test('should forward the call to DataConnectionChecker.hasConnection',
         () async {
-      // arange
+      // arrange
       final tHasConnectionFuture = Future.value(true);
       when(mockDataConnectionChecker.hasConnection)
           .thenAnswer((_) => tHasConnectionFuture);

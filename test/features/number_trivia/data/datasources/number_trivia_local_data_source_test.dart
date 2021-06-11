@@ -27,7 +27,7 @@ void main() {
     test(
         'should return NumberTrivia from SharedPreferences when there is one in the cache.',
         () async {
-      // arange
+      // arrange
       when(mockSharedPreferences.getString(any))
           .thenReturn(fixture('trivia_cached.json'));
       // act
@@ -39,7 +39,7 @@ void main() {
 
     test('should throw a CachedExeption when there is not a cached value.',
         () async {
-      // arange
+      // arrange
       when(mockSharedPreferences.getString(any)).thenReturn(null);
       // act
       final call = dataSourceImpl.getLastNumberTrivia;
