@@ -1,5 +1,6 @@
-import 'package:clean_arch_tdd_trivia_app/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:meta/meta.dart';
+
+import '../../domain/entities/number_trivia.dart';
 
 class NumberTriviaModel extends NumberTrivia {
   NumberTriviaModel({

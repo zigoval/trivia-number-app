@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import 'package:clean_arch_tdd_trivia_app/core/error/exceptions.dart';
-import 'package:clean_arch_tdd_trivia_app/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../models/number_trivia_model.dart';
 
 const CACHED_NUMBER_TRIVIA = 'CACHED_NUMBER_TRIVIA';
 
